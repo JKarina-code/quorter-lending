@@ -73,8 +73,7 @@ function App() {
 
       <select
         className="mt-5 w-full p-2 bg-white border border-gray-300 rounded-lg text-center text-xl font-bold text-gray-500"
-        value="months"
-        onChange={changeMonths}
+        onChange={changeMonths} 
       >
         <option value="6">6 Months</option>
         <option value="12">12 Months</option>
@@ -94,7 +93,7 @@ function App() {
           pay
         </p>
         <p className="text-xl text-gray-500 text-center font-bold">
-          <span className="text-indigo-600">{formatMoney(pay)}</span>Monthly
+          <span className="text-indigo-600">{formatMoney(pay)}</span> Monthly
         </p>
       </div>
     </div>

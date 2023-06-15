@@ -19,9 +19,9 @@ const calculateTotalPay = (amount, term) => {
     total = amount * 1.2;
   }
 
-  if (term === 6) {
+  if (term === "6") {
     total *= 1.1;
-  } else if (term === 12) {
+  } else if (term === "12") {
     total *= 1.2;
   } else {
     total *= 1.3;
