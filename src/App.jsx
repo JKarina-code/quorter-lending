@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header, Button } from "./components";
+import { formatMoney, calculateTotalPay } from "./helpers";
 
 function App() {
   const MIN = 0;
@@ -7,6 +8,17 @@ function App() {
   const STEP = 100;
   const [amount, setAmount] = useState(1000);
   const [months, setMonths] = useState(6);
+  const [total, setTotal] = useState();
+  const [pay, setPay] = useState();
+
+  useEffect(() => {
+    const resultTotalPay = calculateTotalPay(amount, months);
+    setTotal(resultTotalPay);
+  }, [amount, months]);
+
+  useEffect(() => {
+    setPay(total / months);
+  }, [total]);
 
   function handleChange(e) {
     setAmount(+e.target.value);
@@ -52,7 +64,7 @@ function App() {
       />
 
       <p className="text-center my-10 text-5xl font-extrabold text-indigo-600">
-        {amount}
+        {formatMoney(amount)}
       </p>
 
       <h2 className="text-2xl font-extrabold text-gray-500 text-center">
@@ -78,10 +90,11 @@ function App() {
           <span className="text-indigo-600">{months}</span> Months
         </p>
         <p className="text-xl text-gray-500 text-center font-bold">
-          <span className="text-indigo-600">total</span> Total to pay
+          <span className="text-indigo-600">{formatMoney(total)}</span> Total to
+          pay
         </p>
         <p className="text-xl text-gray-500 text-center font-bold">
-          <span className="text-indigo-600">pay </span>Monthly
+          <span className="text-indigo-600">{formatMoney(pay)}</span>Monthly
         </p>
       </div>
     </div>
